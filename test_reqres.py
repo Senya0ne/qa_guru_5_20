@@ -72,6 +72,7 @@ def test_get_single_user(id):
 
     response = reqres_session.get(f'/api/users/{id}')
 
+    assert response.status_code == 200
     validate(response.json(), schema=schema)
     assert response.json()['data']['id'] == id
 
@@ -82,6 +83,7 @@ def test_resources_list_default_length():
 
     response = reqres_session.get('/api/unknown')
 
+    assert response.status_code == 200
     assert len(response.json()['data']) == default_resources_count
     validate(response.json(), schema=schema)
 
@@ -92,6 +94,7 @@ def test_get_single_resource(id):
 
     response = reqres_session.get(f'/api/unknown/{id}')
 
+    assert response.status_code == 200
     validate(response.json(), schema=schema)
     assert response.json()['data']['id'] == id
 
@@ -103,6 +106,7 @@ def test_update_user(method):
 
     response = reqres_session.request(method=method, url=f'/api/unknown/{id}', json=request_body)
 
+    assert response.status_code == 200
     validate(response.json(), schema=schema)
     assert response.json()['name'] == request_body['name']
     assert response.json()['job'] == request_body['job']
@@ -114,6 +118,7 @@ def test_successful_register():
 
     response = reqres_session.post(url='/api/register', json=request_body)
 
+    assert response.status_code == 200
     validate(response.json(), schema=schema)
 
 
@@ -122,6 +127,7 @@ def test_unsuccesful_register():
 
     response = reqres_session.post(url='/api/register', json=request_body)
 
+    assert response.status_code == 400
     assert response.json()['error'] == 'Missing password'
 
 
@@ -132,6 +138,7 @@ def test_succesful_login():
     response = reqres_session.post(url='/api/login', json=request_body)
 
     validate(response.json(), schema=schema)
+    assert response.status_code == 200
     assert response.json()['token'] == 'QpwL5tke4Pnpja7X4'
 
 
@@ -140,7 +147,9 @@ def test_unsuccesful_login():
 
     response = reqres_session.post(url='/api/login', json=request_body)
 
+    assert response.status_code == 400
     assert response.json()['error'] == 'Missing password'
+
 
 
 def test_users_page_with_delay():
