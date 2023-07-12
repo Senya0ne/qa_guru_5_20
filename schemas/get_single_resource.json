@@ -1,0 +1,54 @@
+{
+    "type": "object",
+    "required": [
+        "data",
+        "support"
+    ],
+    "additionalProperties": false,
+    "properties": {
+        "data": {
+            "type": "object",
+            "required": [
+                "id",
+                "name",
+                "year",
+                "color",
+                "pantone_value"
+            ],
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "year": {
+                    "type": "integer"
+                },
+                "color": {
+                    "type": "string"
+                },
+                "pantone_value": {
+                    "type": "string"
+                }
+            }
+        },
+        "support": {
+            "type": "object",
+            "required": [
+                "url",
+                "text"
+            ],
+            "additionalProperties": false,
+            "properties": {
+                "url": {
+                    "type": "string"
+                },
+                "text": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}

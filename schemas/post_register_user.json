@@ -1,0 +1,16 @@
+{
+    "type": "object",
+    "required": [
+        "id",
+        "token"
+    ],
+    "additionalProperties": false,
+    "properties": {
+        "id": {
+            "type": "integer"
+        },
+        "token": {
+            "type": "string"
+        }
+    }
+}
