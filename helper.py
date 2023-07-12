@@ -1,7 +1,6 @@
 import json
 import logging
 import os.path
-from json import JSONDecodeError
 
 import allure
 import requests.exceptions

@@ -151,7 +151,6 @@ def test_unsuccesful_login():
     assert response.json()['error'] == 'Missing password'
 
 
-
 def test_users_page_with_delay():
     delay = 3
     schema = load_json_schema('get_user_list.json')
